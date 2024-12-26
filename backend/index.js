@@ -13,7 +13,8 @@ const userRoute = require("./routes/user.routes.js");
 const authRoutes = require("./routes/auth.routes.js");
 
 const app = express();
-const port = 3000;
+const PORT = 3000;
+const HOST = process.env.NODE_ENV === "production" ? "0.0.0.0" : "localhost";
 
 //midleware
 app.use(express.json());
@@ -41,7 +42,7 @@ app.get("/", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`SIS Running on Port ${port}`);
+  console.log(`SIS Running on Port ${HOST}:${PORT}`);
 });
 
 mongoose.connect(
